@@ -30,12 +30,12 @@ def tip_jar():
 
 def newton():
     number = eval(input("what number do you want to square root?"))
-    approx = eval(input("how many times should we improve the approximation?"))
-    root = 0
-    for i in range(1, approx):
-        root = (number / i) / 2
-        root += (root / 2)
-    print(root)
+    guess = eval(input("how many times should we improve the approximation?"))
+    acc = 0
+    for _ in range(guess):
+        root = (guess + (number / guess))/2
+        acc += root
+    print(acc)
 
 
 def sequence():
