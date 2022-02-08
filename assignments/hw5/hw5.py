@@ -11,10 +11,10 @@ I certify that this assignment is entirely my own work.
 
 
 def name_reverse():
-    s = input("Print first and last name:").split(" ")
-    first = s[0]
-    last = s[-1]
-    print(last, ",", first)
+    name = input("Print first and last name:").split()
+    first = name[0]
+    last = name[1]
+    print(last + ", " + first)
 
 
 def company_name():
@@ -45,11 +45,11 @@ def names():
 
 def thirds():
     num_sentences = eval(input("enter the number of sentences:"))
-    acc = ""
+    acc = []
     for i in range(num_sentences):
         sentence = (input("Sentence " + str(i + 1) + ":"))
         threes = sentence[::3]
-        acc += str(threes) + "\n"
+        acc.append(threes)
     print(acc)
 
 
@@ -65,10 +65,12 @@ def word_average():
 
 
 def pig_latin():
-    sentence = input("Sentence to convert to pig latin:").split()
+    sentence = input("Sentence to convert to pig latin:").split(" ")
+    translation = ''
     for word in sentence:
-        pig = word[1:] + word[0] + "ay"
-        print(pig, end=" ")
+        pig = word[1:] + word[0] + "ay" + " "
+        translation += pig.lower()
+    print(translation[:-1])
 
 
 if __name__ == '__main__':
