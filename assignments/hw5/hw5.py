@@ -54,16 +54,14 @@ def thirds():
 
 
 def word_average():
-    num_sentences = eval(input("Enter the amount of sentences:"))
-    for i in range(num_sentences):
-        acc = 0
-        sentence = input("Sentence " + str(i + 1) + ":")
-        words = sentence.split(" ")
-        num_words = len(words)
-        for word in words:
-            num_letters = len(word)
-            acc = acc + num_letters
-        print(acc / num_words)
+    sentence = input("enter a sentence:")
+    words = sentence.split()
+    num_words = len(words)
+    acc = 0
+    for word in words:
+        num_letters = len(word)
+        acc += num_letters
+    print(acc / num_words)
 
 
 def pig_latin():
