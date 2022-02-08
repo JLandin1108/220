@@ -135,11 +135,5 @@ def pi2():
     print("accuracy: ", math.pi - acc)
 
 
-def main():
-    squares()
-    rectangle()
-    circle()
-    pi2()
-
-
-main()
+if __name__ == '__main__':
+    pass

@@ -71,15 +71,5 @@ def pig_latin():
         print(pig, end=" ")
 
 
-def main():
-    name_reverse()
-    company_name()
-    initials()
-    names()
-    thirds()
-    word_average()
-    pig_latin()
-
-
 if __name__ == '__main__':
     pass
