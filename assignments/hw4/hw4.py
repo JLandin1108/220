@@ -1,6 +1,6 @@
 """
 Name: Jillian Landin
-hw3.py
+hw4.py
 
 Problem: using graphics package with for loops
 
