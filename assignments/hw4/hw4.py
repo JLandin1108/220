@@ -1,63 +1,138 @@
 """
-Name: <your name goes here – first and last>
-<ProgramName>.py
+Name: Jillian Landin
+hw3.py
 
-Problem: <Brief, one or two sentence description of the problem that this program solves, in your own words.>
+Problem: using graphics package with for loops
 
 Certification of Authenticity:
 <include one of the following>
 I certify that this assignment is entirely my own work.
-I certify that this assignment is my own work, but I discussed it with: <Name(s)>
 """
 
 from graphics import *
+import math
 
 
 def squares():
-    # Creates a graphical window
     width = 400
     height = 400
     win = GraphWin("Clicks", width, height)
 
-    # number of times user can move circle
     num_clicks = 5
 
-    # create a space to instruct user
     inst_pt = Point(width / 2, height - 10)
-    instructions = Text(inst_pt, "Click to move circle")
+    instructions = Text(inst_pt, "Click to create new square")
     instructions.draw(win)
 
-    # builds a circle
-    shape = Circle(Point(50, 50), 20)
+    shape = Rectangle(Point(20, 20), Point(70, 70))
     shape.setOutline("red")
     shape.setFill("red")
-    shape.draw(win)
 
-    # allows the user to click multiple times to move the circle
     for i in range(num_clicks):
-        click = win.getMouse()
-        center = shape.getCenter()  # center of circle
+        p = win.getMouse()
+        shape = Rectangle(Point(p.getX() - 10, p.getY() - 10), Point(p.getX() + 10, p.getY() + 10))
+        shape.setOutline("red")
+        shape.setFill("red")
+        shape.draw(win)
 
-        # move amount is distance from center of circle to the
-        # point where the user clicked
-        change_x = click.getX() - center.getX()
-        change_y = click.getY() - center.getY()
-        shape.move(change_x, change_y)
+    instructions.undraw()
 
+    inst_pt = Point(width / 2, height - 10)
+    instructions_2 = Text(inst_pt, "Click again to close")
+    instructions_2.draw(win)
     win.getMouse()
     win.close()
 
 
 def rectangle():
-    pass
+    width = 400
+    height = 400
+    win = GraphWin("Lab 4", width, height)
+
+    inst_pt = Point(200, 350)
+    instructions = Text(inst_pt, "Click to create 2 points on a rectangle")
+    instructions.draw(win)
+
+    p = win.getMouse()
+    p2 = win.getMouse()
+    shape = Rectangle(p, p2)
+    shape.setOutline("red")
+    shape.setFill("red")
+    shape.draw(win)
+
+    length = abs(p.getY() - p2.getY())
+    width = abs(p.getX() - p2.getX())
+    perimeter = 2 * (length + width)
+    area = (width * length)
+
+    instructions.undraw()
+    inst_pt = win.getMouse()
+    instructions_2 = Text(inst_pt, "Perimeter = " + str(perimeter))
+    instructions_2.draw(win)
+    inst_pt2 = win.getMouse()
+    instructions_3 = Text(inst_pt2, "Area = " + str(area))
+    instructions_3.draw(win)
+    win.getMouse()
+
+    instructions_2.undraw()
+    instructions_3.undraw()
+
+    inst_pt = Point(200, 350)
+    instructions_4 = Text(inst_pt, "Click to quit")
+    instructions_4.draw(win)
+    win.getMouse()
+    win.close()
 
 
 def circle():
-    pass
+    width = 400
+    height = 400
+    win = GraphWin("Lab 4", width, height)
+
+    num_clicks = 2
+
+    inst_pt = Point(200, 350)
+    instructions = Text(inst_pt, "Click to create center and outer edge of a circle")
+    instructions.draw(win)
+
+    p = win.getMouse()
+    p2 = win.getMouse()
+
+    px = p.getX()
+    py = p.getY()
+    p2x = p2.getX()
+    p2y = p2.getY()
+    radius = math.sqrt(((p2x - px) ** 2 + (p2y - py) ** 2))
+
+    shape = Circle(p, radius)
+    shape.setOutline("red")
+    shape.setFill("red")
+    shape.draw(win)
+
+    instructions.undraw()
+    inst_pt = win.getMouse()
+    instructions_2 = Text(inst_pt, "Radius = " + str(radius))
+    instructions_2.draw(win)
+    win.getMouse()
+    instructions_2.undraw()
+
+    inst_pt = Point(200, 350)
+    instructions_4 = Text(inst_pt, "Click to quit")
+    instructions_4.draw(win)
+    win.getMouse()
+    win.close()
 
 
 def pi2():
-    pass
+    n = eval(input("enter the number of terms to sum:"))
+    acc = 0
+    for i in range(n):
+        num = 4
+        denom = 1 + 2 * i
+        frac = (num / denom) * ((-1) ** i)
+        acc = acc + frac
+    print("pi approximation: ", acc)
+    print("accuracy: ", math.pi - acc)
 
 
 if __name__ == '__main__':
